@@ -1,9 +1,9 @@
-import ruamel.yaml
+from ruamel.yaml import YAML
 import json
 in_file = '/jobs/rembrandt-mayan-edkii.yaml'
 out_file = '/.github/workflows/pyField.yaml'
 
-yaml = ruamel.yaml.YAML(typ='safe')
+yaml = YAML(typ='safe')
 with open(in_file) as fpi:
     data = yaml.load(fpi)
     print(data)
