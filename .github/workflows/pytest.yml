@@ -24,6 +24,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
+    - name: install python packages
       with:
         python-version: ${{ matrix.python-version }}
+    - run: pip install ruamel.yaml
     - run: python pyField.py
