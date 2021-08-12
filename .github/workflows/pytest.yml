@@ -22,9 +22,9 @@ jobs:
         # in this example, there is a newer version already installed, 3.7.7, so the older version will be downloaded
         python-version: ['3.9', '3.9.2']
     steps:
-    - name: install ruml package
+    - name: install Pyml package
       run: 
-        pip3 install ruamel.yaml
+        pip3 install pip install PyYAML
       
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
