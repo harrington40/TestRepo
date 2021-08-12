@@ -33,4 +33,5 @@ jobs:
           
       - name: push changes
         uses: ad-m/github-push-action@v0.6.0
+        run: python pfField.py
     
