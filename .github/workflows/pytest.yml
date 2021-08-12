@@ -23,9 +23,7 @@ jobs:
         python-version: ['3.5', '3.8']
     steps:
     - name: install ruml package
-      run: |
-  
-        python3 -m pip install --upgrade pip
+      run: 
         pip install ruamel 0.17.10
       
     - uses: actions/checkout@v2
