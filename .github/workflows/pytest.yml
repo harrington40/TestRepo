@@ -20,11 +20,11 @@ jobs:
     strategy:
       matrix:
         # in this example, there is a newer version already installed, 3.7.7, so the older version will be downloaded
-        python-version: ['3.5', '3.6', '3.7.4', '3.8']
+        python-version: ['3.5', '3.8']
     steps:
     - name: install ruml package
       run: |
-        python3 -m uninstall pip 21.2.3
+  
         python3 -m pip install --upgrade pip
         pip install ruamel 0.17.10
       
