@@ -1,14 +1,4 @@
 - job-template:
-<<<<<<< HEAD
-        name: "{name}{Type}"
-        project-type: pipeline
-        defaults: global
-        description: "Do not edit this job through the web!"
-        disabled: false
-        concurrent: true
-        display-name: "BiosQA {PLATFORM} {Type}"
-        parameters:
-=======
     name: '{name}{Type}'
     project-type: pipeline
     defaults: global
@@ -17,7 +7,6 @@
     concurrent: true
     display-name: "BiosQA {PLATFORM} {Type}"
     parameters:
->>>>>>> 6bc333541580127716e02101f2e4070ebe0758ee
         - string:
                 name: RMS_BUILD_INFO
                 default: ""
