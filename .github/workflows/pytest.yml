@@ -24,7 +24,7 @@ jobs:
     steps:
     - name: install ruml package
       run: 
-        pip3 install - r requirement.txt
+        pip3 install -r requirement.txt
       
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
