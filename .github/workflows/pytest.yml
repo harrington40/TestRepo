@@ -24,7 +24,7 @@ jobs:
     steps:
     - name: install ruml package
       run: 
-        pip3 install ruamel==0.17.10
+        pip3 install ruamel.yaml
       
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
