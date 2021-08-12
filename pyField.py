@@ -1,6 +1,6 @@
 import ruamel.yaml
 import json
-in_file = ''
+in_file = '/jobs/rembrandt-mayan-edkii.yaml'
 out_file = 'output.json'
 
 yaml = ruamel.yaml.YAML(typ='safe')
