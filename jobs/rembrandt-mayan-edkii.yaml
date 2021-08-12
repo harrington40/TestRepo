@@ -1,0 +1,219 @@
+- project:
+    ## Project/Job Configuraiton
+    # name must match RMS "Product" with spaces removed
+    name: MayanInsydeEDKII 
+    # Program/platform must match SMT
+    PROGRAM: "Rembrandt"
+    PLATFORM: "Mayan-RMB"
+    ## Email Configuration
+    EXECUTION_OWNER: "branden.harger@amd.com"
+    OPERATIONS_OWNER: "jon.pugh@amd.com"
+    # Comma seperated list of team members to email
+    TEAM: "dl.BIOSQaAustin@amd.com"
+    ## BIOS Test Configuration
+    # RELEASE_TYPE 1 is internal, 2 is NDA
+    RELEASE_TYPE: "1"
+    PRODUCT: "Mayan Insyde EDKII"
+    GROUP: "BIOS-Rev RMB"
+    TYPE: "weekly"
+    ## APEX Job Configuration
+    # APEX subscription to run on. APEX_SUBSCRIPTION_PREFIX be combined with _ and the config from TEST_QUEUE_JSON, ex BIOS_QA_Mayan-RMB_A
+    APEX_SUBSCRIPTION_PREFIX: "BIOS_QA_Mayan-RMB"
+    # Execution label and job name will start with this
+    LABEL_PREFIX: "BIOSQA_Smoke_Test"
+    # .conf file for OS to install
+    # OS .conf files are stored in \\ouray\data\tftpboot\ipxe\menu\autobot
+    OS_CONF: "win10-pro-64-21h1-latest.conf"
+    # Maximum time to wait for job to start running
+    JOB_START_TIMEOUT: "1440"
+    # Parameter override string to pass to the APEX scheduler
+    PARAMETER_OVERRIDE: ""
+
+    ## Test Queue Configuration
+    # This queue will run first
+    FIRST_SETUP_QUEUE: "BIOS_QA_RMB_FP7_Mayan_SystemStability_System_Setup "
+    # This queue will run before all other test queues
+    NEXT_SETUP_QUEUE: "Smoker_Setup"
+    TEST_QUEUE_JSON: |+
+        {{   
+            "BIOS_QA_Mayan-RMB_Config1": [
+                "BIOS_QA_RMB_Mayan_ACPI_APIC_Table_Refactor",
+                "BIOS_QA_RMB_Mayan_ACPI_FADT_Table_Refactor",
+                "BIOS_QA_RMB_Mayan_ACPI_NameSpace_Object_TCG_ACPI_2.0_Refactor",
+                "BIOS_QA_RMB_Mayan_ACPI_XSDT_Table_Refactor",
+                "BIOS_QA_RMB_Mayan_CPU_Downcore_8c_16t _Refactor",
+                "BIOS_QA_RMB_Mayan_DataFabric_GFX_UMA_FB_Refactor",
+                "BIOS_QA_RMB_Mayan_Memory_Refactor",
+                "BIOS_QA_RMB_Mayan_SMBIOS_Type16_Refactor",
+                "BIOS_QA_RMB_Mayan_SMBIOS_Type17_Refactor",
+                "BIOS_QA_RMB_Mayan_SMBIOS_Type20_Refactor",
+                "BIOS_QA_RMB_Mayan_SMBIOS_Type4_Refactor",
+                "BIOS_QA_RMB_Mayan_SystemStability_BIOS_Flash _Refactor",
+                "BIOS_QA_RMB_ACPI_FACS_Table_Refactor",
+                "BIOS_QA_RMB_ACPI_FPDT_Boot_Time_Refactor",
+                "BIOS_QA_RMB_ACPI_IVRS_Table_Refactor",
+                "BIOS_QA_RMB_CC6Disabled_Refactor",
+                "BIOS_QA_RMB_CPPC_Refactor",
+                "BIOS_QA_RMB_CPU_CStateBoost_Refactor",
+                "BIOS_QA_RMB_CPU_Core Performance Boost_Refactor",
+                "BIOS_QA_RMB_CPU_TSME_Refactor",
+                "BIOS_QA_RMB_DataFabric_12V_Discrete_Graphic_Controller _Refactor",
+                "BIOS_QA_RMB_DataFabric_EVAL_dGPU_Refactor",
+                "BIOS_QA_RMB_DataFabric_HDMI2.0_USBTypeC_Verification_S0i3_Refactor",
+                "BIOS_QA_RMB_DataFabric_Hybrid_GraphicFeatures _Refactor",
+                "BIOS_QA_RMB_DataFabric_iGPU_4-CORE_DownCore_Refactor",
+                "BIOS_QA_RMB_DataFabric_iGPU_6-CORE_DownCore_Refactor",
+                "BIOS_QA_RMB_DataFabric_iGPU_8-CORE_DownCore_Refactor",
+                "BIOS_QA_RMB_DataFabric_iGPU_DDI_Configuration_Refactor",
+                "BIOS_QA_RMB_DataFabric_iGPU_DP_Configuration_Refactor",
+                "BIOS_QA_RMB_DataFabric_iGPU_Display_Audio_Controller_Refactor",
+                "BIOS_QA_RMB_DataFabric_iGPU_eDP Verification_Refactor",
+                "BIOS_QA_RMB_NBIO_DMAr_Verification_Refactor",
+                "BIOS_QA_RMB_NBIO_IOMMU_DynamicPowerSaving_Verification_Refactor",
+                "BIOS_QA_RMB_NBIO_IOMMU_L1_L2 Clock Gating Verification_Refactor",
+                "BIOS_QA_RMB_NBIO_IOMMU_Support_Verification_Refactor",
+                "BIOS_QA_RMB_NBIO_M2_NVME_J91_Protocol Stability_Refactor  ",
+                "BIOS_QA_RMB_NBIO_M2_NVME_J91_Training_Refactor",
+                "BIOS_QA_RMB_NBIO_M2_NVME_U93_Protocol Stability_Refactor",
+                "BIOS_QA_RMB_NBIO_M2_NVME_U93_Training_Refactor",
+                "BIOS_QA_RMB_NBIO_NVME_J91 M2 to PCIE Adapter Functionality_Refactor",
+                "BIOS_QA_RMB_NBIO_NVME_SSD0_J91_Windows_OS_Installation_Refactor",
+                "BIOS_QA_RMB_NBIO_NVME_SSD1_U93_Windows_OS_Installation_Refactor",
+                "BIOS_QA_RMB_NBIO_Onboard_Lan Verification _Refactor",
+                "BIOS_QA_RMB_NBIO_P2P_ARI_MultiFunction_Verification_Refactor ",
+                "BIOS_QA_RMB_NBIO_PCI-E Resource Allocation_Refactor",
+                "BIOS_QA_RMB_NBIO_PCIE_DT Power Device Switching_Refactor",
+                "BIOS_QA_RMB_NBIO_PCIE_DT_Training_Refactor",
+                "BIOS_QA_RMB_NBIO_PCIE_EVAL Power Device _Refactor",
+                "BIOS_QA_RMB_NBIO_PCIE_EVAL_Negotiated Link Width-Speed with Non-dGPU_Refactor",
+                "BIOS_QA_RMB_NBIO_PCIEx1 Power Device Switching_Refactor",
+                "BIOS_QA_RMB_NBIO_PowerSources_SwitchTimerControl_Refactor",
+                "BIOS_QA_RMB_NBIO_SMI_Filter_Verification_Refactor",
+                "BIOS_QA_RMB_NBIO_SST_ClockGating_Verification_Refactor",
+                "BIOS_QA_RMB_NBIO_Unused_GPP_ClockOFF_WithOutCards_Refactor",
+                "BIOS_QA_RMB_PSP_S0i3 Environment with TPM stability _Refactor",
+                "BIOS_QA_RMB_PSP_TPM2.0 fTPM Bitlocker Drive Encryption S0i3_Refactor",
+                "BIOS_QA_RMB_PSP_fTPM_TCG Verification_Refactor",
+                "BIOS_QA_RMB_SMBIOS_Type7_Refactor",
+                "BIOS_QA_RMB_SMU_EDC_ Limit VDDCR_VDD Verification_Refactor",
+                "BIOS_QA_RMB_SMU_PPT_Configurations_Refactor",
+                "BIOS_QA_RMB_SMU_SPL_Configurations_Refactor ",
+                "BIOS_QA_RMB_SMU_STAPM_Configurations_Refactor",
+                "BIOS_QA_RMB_SMU_TDC_Limit VDDCR_VDD Verification_Refactor",
+                "BIOS_QA_RMB_SMU_TDP_Verification_Refactor",
+                "BIOS_QA_RMB_SMU_Thermal CLK GATE Verification_Refactor",
+                "BIOS_QA_RMB_SMU_Thermal_Control_TjMax_Verification_Refactor",
+                "BIOS_QA_RMB_SMU_Z10_Entry_Exit_Verification_Refactor",
+                "BIOS_QA_RMB_SMU_Z9_Entry_Exit_Verification_Refactor",
+                "BIOS_QA_RMB_SystemStability_BIOSFLASH_SMU Version_Refactor",
+                "BIOS_QA_RMB_SystemStability_PWRTEST_Refactor",
+                "BIOS_QA_RMB_SystemStability_S0i3_S4_ExitLatency_Refactor",
+                "BIOS_QA_RMB_SystemStability_SVM BIOS Support Verification_Refactor",
+                "BIOS_QA_RMB_iFCH_AHCI_SATA_CCC_Support _Refactor",
+                "BIOS_QA_RMB_iFCH_AggressiveSATA_DeepSleep_DEVSLP_Refactor",
+                "BIOS_QA_RMB_iFCH_SATA Controller Interface Speed Support_Refactor",
+                "BIOS_QA_RMB_iFCH_SATA_PortClocks_Auto_ShutDown _Refactor",
+                "BIOS_QA_RMB_iFCH_SPI_Discrete TPM Bitlocker_Refactor ",
+                "BIOS_QA_RMB_iFCH_SPI_SpeedMode_Support Verification_Refactor",
+                "BIOS_QA_RMB_iFCH_Spread Spectrum Verification_Refactor",
+                "BIOS_QA_RMB_iFCH_TPM_Speed_Verification_Refactor",
+                "BIOS_QA_RMB_iFCH_Version_Verification_Refactor",
+                "BIOS_QA_RMB_iFCH_eSPI_SpeedMode_Support Verification_Refactor"
+            ],
+            "BIOS_QA_Mayan-RMB_Config2": [
+                "BIOS_QA_RMB_Mayan_ACPI_APIC_Table_Refactor",
+                "BIOS_QA_RMB_Mayan_ACPI_FADT_Table_Refactor",
+                "BIOS_QA_RMB_Mayan_ACPI_NameSpace_Object_TCG_ACPI_2.0_Refactor",
+                "BIOS_QA_RMB_Mayan_ACPI_XSDT_Table_Refactor",
+                "BIOS_QA_RMB_Mayan_CPU_Downcore_8c_16t _Refactor",
+                "BIOS_QA_RMB_Mayan_DataFabric_GFX_UMA_FB_Refactor",
+                "BIOS_QA_RMB_Mayan_Memory_Refactor",
+                "BIOS_QA_RMB_Mayan_SMBIOS_Type16_Refactor",
+                "BIOS_QA_RMB_Mayan_SMBIOS_Type17_Refactor",
+                "BIOS_QA_RMB_Mayan_SMBIOS_Type20_Refactor",
+                "BIOS_QA_RMB_Mayan_SMBIOS_Type4_Refactor",
+                "BIOS_QA_RMB_Mayan_SystemStability_BIOS_Flash _Refactor",
+                "BIOS_QA_RMB_ACPI_FACS_Table_Refactor",
+                "BIOS_QA_RMB_ACPI_FPDT_Boot_Time_Refactor",
+                "BIOS_QA_RMB_ACPI_IVRS_Table_Refactor",
+                "BIOS_QA_RMB_CC6Disabled_Refactor",
+                "BIOS_QA_RMB_CPPC_Refactor",
+                "BIOS_QA_RMB_CPU_CStateBoost_Refactor",
+                "BIOS_QA_RMB_CPU_Core Performance Boost_Refactor",
+                "BIOS_QA_RMB_CPU_TSME_Refactor",
+                "BIOS_QA_RMB_DataFabric_12V_Discrete_Graphic_Controller _Refactor",
+                
+                "BIOS_QA_RMB_DataFabric_EVAL_dGPU_Refactor",
+                "BIOS_QA_RMB_DataFabric_HDMI2.0_USBTypeC_Verification_S0i3_Refactor",
+                "BIOS_QA_RMB_DataFabric_Hybrid_GraphicFeatures _Refactor",
+                "BIOS_QA_RMB_DataFabric_iGPU_4-CORE_DownCore_Refactor",
+                "BIOS_QA_RMB_DataFabric_iGPU_6-CORE_DownCore_Refactor",
+                "BIOS_QA_RMB_DataFabric_iGPU_8-CORE_DownCore_Refactor",
+                "BIOS_QA_RMB_DataFabric_iGPU_DDI_Configuration_Refactor",
+                "BIOS_QA_RMB_DataFabric_iGPU_DP_Configuration_Refactor",
+                "BIOS_QA_RMB_DataFabric_iGPU_Display_Audio_Controller_Refactor",
+                "BIOS_QA_RMB_DataFabric_iGPU_eDP Verification_Refactor",
+                "BIOS_QA_RMB_NBIO_DMAr_Verification_Refactor",
+                "BIOS_QA_RMB_NBIO_IOMMU_DynamicPowerSaving_Verification_Refactor",
+                "BIOS_QA_RMB_NBIO_IOMMU_L1_L2 Clock Gating Verification_Refactor",
+                "BIOS_QA_RMB_NBIO_IOMMU_Support_Verification_Refactor",
+                "BIOS_QA_RMB_NBIO_M2_NVME_J91_Protocol Stability_Refactor  ",
+                "BIOS_QA_RMB_NBIO_M2_NVME_J91_Training_Refactor",
+                "BIOS_QA_RMB_NBIO_M2_NVME_U93_Protocol Stability_Refactor",
+                "BIOS_QA_RMB_NBIO_M2_NVME_U93_Training_Refactor",
+                "BIOS_QA_RMB_NBIO_NVME_J91 M2 to PCIE Adapter Functionality_Refactor",
+                "BIOS_QA_RMB_NBIO_NVME_SSD0_J91_Windows_OS_Installation_Refactor",
+                "BIOS_QA_RMB_NBIO_NVME_SSD1_U93_Windows_OS_Installation_Refactor",
+                "BIOS_QA_RMB_NBIO_Onboard_Lan Verification _Refactor",
+                "BIOS_QA_RMB_NBIO_P2P_ARI_MultiFunction_Verification_Refactor ",
+                "BIOS_QA_RMB_NBIO_PCI-E Resource Allocation_Refactor",
+                "BIOS_QA_RMB_NBIO_PCIE_DT Power Device Switching_Refactor",
+                "BIOS_QA_RMB_NBIO_PCIE_DT_Training_Refactor",
+                "BIOS_QA_RMB_NBIO_PCIE_EVAL Power Device _Refactor",
+                "BIOS_QA_RMB_NBIO_PCIE_EVAL_Negotiated Link Width-Speed with Non-dGPU_Refactor",
+                "BIOS_QA_RMB_NBIO_PCIEx1 Power Device Switching_Refactor",
+                "BIOS_QA_RMB_NBIO_PowerSources_SwitchTimerControl_Refactor",
+                "BIOS_QA_RMB_NBIO_SMI_Filter_Verification_Refactor",
+                "BIOS_QA_RMB_NBIO_SST_ClockGating_Verification_Refactor",
+                "BIOS_QA_RMB_NBIO_Unused_GPP_ClockOFF_WithOutCards_Refactor",
+                "BIOS_QA_RMB_PSP_S0i3 Environment with TPM stability _Refactor",
+                "BIOS_QA_RMB_PSP_TPM2.0 fTPM Bitlocker Drive Encryption S0i3_Refactor",
+                "BIOS_QA_RMB_PSP_fTPM_TCG Verification_Refactor",
+                "BIOS_QA_RMB_SMBIOS_Type7_Refactor",
+                "BIOS_QA_RMB_SMU_EDC_ Limit VDDCR_VDD Verification_Refactor",
+                "BIOS_QA_RMB_SMU_PPT_Configurations_Refactor",
+                "BIOS_QA_RMB_SMU_SPL_Configurations_Refactor ",
+                "BIOS_QA_RMB_SMU_STAPM_Configurations_Refactor",
+                "BIOS_QA_RMB_SMU_TDC_Limit VDDCR_VDD Verification_Refactor",
+                "BIOS_QA_RMB_SMU_TDP_Verification_Refactor",
+                "BIOS_QA_RMB_SMU_Thermal CLK GATE Verification_Refactor",
+                "BIOS_QA_RMB_SMU_Thermal_Control_TjMax_Verification_Refactor",
+                "BIOS_QA_RMB_SMU_Z10_Entry_Exit_Verification_Refactor",
+                "BIOS_QA_RMB_SMU_Z9_Entry_Exit_Verification_Refactor",
+                "BIOS_QA_RMB_SystemStability_BIOSFLASH_SMU Version_Refactor",
+                "BIOS_QA_RMB_SystemStability_PWRTEST_Refactor",
+                "BIOS_QA_RMB_SystemStability_S0i3_S4_ExitLatency_Refactor",
+                "BIOS_QA_RMB_SystemStability_SVM BIOS Support Verification_Refactor",
+                "BIOS_QA_RMB_iFCH_AHCI_SATA_CCC_Support _Refactor",
+                "BIOS_QA_RMB_iFCH_AggressiveSATA_DeepSleep_DEVSLP_Refactor",
+                "BIOS_QA_RMB_iFCH_SATA Controller Interface Speed Support_Refactor",
+                "BIOS_QA_RMB_iFCH_SATA_PortClocks_Auto_ShutDown _Refactor",
+                "BIOS_QA_RMB_iFCH_SPI_Discrete TPM Bitlocker_Refactor ",
+                "BIOS_QA_RMB_iFCH_SPI_SpeedMode_Support Verification_Refactor",
+                "BIOS_QA_RMB_iFCH_Spread Spectrum Verification_Refactor",
+                "BIOS_QA_RMB_iFCH_TPM_Speed_Verification_Refactor",
+                "BIOS_QA_RMB_iFCH_Version_Verification_Refactor",
+                "BIOS_QA_RMB_iFCH_eSPI_SpeedMode_Support Verification_Refactor"
+            ] 
+        }}
+
+    # Pipeline Libraries
+    CI_LIB_SCM_URL: "git@github.com:AMD-CBQA/bqa-jenkins-config.git"
+    CI_LIB_SCM_BRANCH: "master"
+    CI_PIPELINE_SCRIPT: RmsBiosSmokeTest.groovy
+
+    jobs:
+        - '{name}{Type}':
+            Type: Weekly
+        - '{name}{Type}':
+            Type: Major

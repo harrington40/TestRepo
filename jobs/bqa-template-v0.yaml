@@ -1,0 +1,93 @@
+- job-template:
+<<<<<<< HEAD
+        name: "{name}{Type}"
+        project-type: pipeline
+        defaults: global
+        description: "Do not edit this job through the web!"
+        disabled: false
+        concurrent: true
+        display-name: "BiosQA {PLATFORM} {Type}"
+        parameters:
+=======
+    name: '{name}{Type}'
+    project-type: pipeline
+    defaults: global
+    description: "Do not edit this job through the web!"
+    disabled: {ISDISABLED}
+    concurrent: true
+    display-name: "BiosQA {PLATFORM} {Type}"
+    parameters:
+>>>>>>> 6bc333541580127716e02101f2e4070ebe0758ee
+        - string:
+                name: RMS_BUILD_INFO
+                default: ""
+                description: "Build info object sent from Azure function"
+        - string:
+                name: OVERRIDE_BUILD
+                default: ""
+                description: "Start a build on a specific build ID. Used to manually trigger a build"
+        - string:
+                name: PROGRAM
+                default: "{PROGRAM}"
+                description: "Program being tested. This must match SMT. Example: Rembrandt"
+        - string:
+                name: PLATFORM
+                default: "{PLATFORM}"
+                description: "Platform being tested. This must match SMT. Example: Mayan-RMB"
+        - string:
+                name: EXECUTION_OWNER
+                default: "{EXECUTION_OWNER}"
+                description: "Email address of the execution owner. This will be used when scheduling APEX jobs"
+        - string:
+                name: OPERATIONS_OWNER
+                default: "{OPERATIONS_OWNER}"
+                description: "Email address of the Jenkins job owner. This will be CC'd on result emails"
+        - string:
+                name: TEAM
+                default: "{TEAM}"
+                description: "Comma seperated list of email addresses to send result emails to"
+        - string:
+                name: RELEASE_TYPE
+                default: "{RELEASE_TYPE}"
+                description: "Use to specify Internal or NDA. 1 is Internal, 2 is NDA"
+        - string:
+                name: APEX_SUBSCRIPTION_PREFIX
+                default: "{APEX_SUBSCRIPTION_PREFIX}"
+                description: "The first part of the APEX subscription to run on. APEX_SUBSCRIPTION_PREFIX be combined with _ and the config from TEST_QUEUE_JSON, ex BIOS_QA_Mayan-RMB_A"
+        - string:
+                name: LABEL_PREFIX
+                default: "{LABEL_PREFIX}"
+                description: "The label to use for executions. This will be used to create the execution label and APEX job name"
+        - string:
+                name: OS_CONF
+                default: "{OS_CONF}"
+                description: "Operating system .conf file for the OS to be installed"
+        - string:
+                name: JOB_START_TIMEOUT
+                default: "{JOB_START_TIMEOUT}"
+                description: "Maximum time to wait for job to start running"
+        - string:
+                name: PARAMETER_OVERRIDE
+                default: "{PARAMETER_OVERRIDE}"
+                description: "Parameter override string to pass to the APEX scheduler"
+        - string:
+                name: FIRST_SETUP_QUEUE
+                default: "{FIRST_SETUP_QUEUE}"
+                description: "The setup queue to use on the first execution"
+        - string:
+                name: NEXT_SETUP_QUEUE
+                default: "{NEXT_SETUP_QUEUE}"
+                description: "The setup queue to use for all executions except the first"
+        - text:
+                name: TEST_QUEUE_JSON
+                default: "{TEST_QUEUE_JSON}"
+                description: "The JSON of configs and their test queues to run. First level of JSON is the config, second level is the list of queues"
+        pipeline-scm:
+        scm:
+        - git:
+                url: "{CI_LIB_SCM_URL}"
+                clean: true
+                branches:
+                - "{CI_LIB_SCM_BRANCH}"
+        script-path: "{CI_PIPELINE_SCRIPT}"
+        lightweight-checkout: true
