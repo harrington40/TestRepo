@@ -1,0 +1,12 @@
+-job-template:
+    name: example-test1
+
+    project-type: pipeline
+
+    lograte:
+        datsToKeep: 30
+
+    builders:
+        - shell: |
+            echo "Hello mr Harrington"
+    
