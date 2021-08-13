@@ -9,4 +9,10 @@
     builders:
         - shell: |
             echo "Hello mr Harrington"
-    
+
+
+- project:
+    name: "exampleProject"
+
+    job:
+       - example-test1
